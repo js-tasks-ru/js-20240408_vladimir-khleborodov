@@ -5,15 +5,11 @@
  * @returns {object} - returns the new object
  */
 export const omit = (obj, ...fields) => {
-  let arr = Array.from(arguments);
-  for (let i = 1; i < arr.length; i++) {
-    if (typeof arr[i] === 'string') break;
-    return obj;
-  }
+  if (fields.length === 0) return obj;
   
-  let absentItems = [];
+  const absentItems = [];
   
-  for (let item of Object.entries(obj)) {
+  for (const item of Object.entries(obj)) {
     if (!fields.includes(item[0])) absentItems.push(item);
   }
   
