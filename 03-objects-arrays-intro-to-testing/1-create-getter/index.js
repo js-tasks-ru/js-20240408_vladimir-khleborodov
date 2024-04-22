@@ -10,7 +10,7 @@ export function createGetter(path) {
     let result = obj;
     
     for (const elem of pathArr) {
-      if (result[elem] === undefined) return;
+      if (!result.hasOwnProperty(elem)) return;
       if (result[elem] === null) return null;
       result = result[elem];
     }
